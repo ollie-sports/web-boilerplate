@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -20,7 +21,6 @@ module.exports = {
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
       // First, run the linter.
-      // It's important to do this before Babel processes the JS.
       {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         enforce: "pre",
@@ -46,5 +46,7 @@ module.exports = {
     new ModuleNotFoundPlugin(),
     //Prevent momentjs locales from being put in the bundle
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    //Lets us do `import _ from 'lodash'` without bloating our bundle size unnecessarily
+    new LodashModuleReplacementPlugin(),
   ],
 };
