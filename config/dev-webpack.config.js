@@ -10,6 +10,7 @@ module.exports = () => {
 
   baseConfig.devServer = {
     clientLogLevel: "error",
+    hot: true
   };
 
   baseConfig.plugins.push(

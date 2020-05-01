@@ -1,8 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -40,7 +40,14 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin([{ from: path.resolve(__dirname, "../public") }]),
+    //Creates an index.html file at the base of the output directory based on our template
+    new HtmlWebpackPlugin({
+      filename: "./index.html",
+      template: "./public/index.html",
+      templateParameters: () => {
+        return { foo: "bar" };
+      },
+    }),
     // This gives some necessary context to module not found errors, such as
     // the requesting resource.
     new ModuleNotFoundPlugin(),
