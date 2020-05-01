@@ -12,6 +12,7 @@ module.exports = () => {
     clientLogLevel: "error",
     hot: true,
     compress: true,
+    historyApiFallback: true,
     stats: {
       assets: false,
       children: false,

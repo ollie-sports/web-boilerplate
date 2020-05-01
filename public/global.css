@@ -1,3 +1,9 @@
+/* Make all elements column flex by default */
+body * {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Full width window */
 html,
 body {
@@ -12,6 +18,11 @@ body {
   width: 100%;
 }
 
+/* Disable top level horizontal scroll */
+html, body, #root{
+  overflow-x: hidden
+}
+
 /* Make padding and margin not affect width */
 html {
   box-sizing: border-box;
@@ -21,11 +32,6 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
-}
-
-/* Make all elements flex by default */
-body * {
-  display: flex;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
