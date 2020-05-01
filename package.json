@@ -6,13 +6,8 @@
     "analyze": "webpack --config config/prod-webpack.config.js --profile --json > stats.json && webpack-bundle-analyzer stats.json"
   },
   "lint-staged": {
-    "*.tsx?": [
-      "eslint",
-      "prettier --write"
-    ],
-    "*.json": [
-      "prettier --write"
-    ]
+    "**/*.{ts,tsx}": "eslint",
+    "**/*.{ts,tsx,json}": "prettier --write"
   },
   "husky": {
     "hooks": {
