@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import * as _ from "lodash-es";
 
-export const App: React.FC<{ blah: number }> = (p) => {
-  console.log(_.map([]));
+export function App(p: { blah: number }): ReactElement {
+  console.log(_.map([])); //Verifies that tree shaking is working...
   return <div>Waddup world {p.blah}</div>;
-};
+}
